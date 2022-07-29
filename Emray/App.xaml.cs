@@ -8,7 +8,7 @@ namespace Emray;
 public partial class App : Application
 {
     const int WindowWidth = 1280;
-    const int WindowHeight = 720;
+    const int WindowHeight = 680;
     public App()
     {
         InitializeComponent();
