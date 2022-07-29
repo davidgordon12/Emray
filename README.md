@@ -2,7 +2,7 @@
 
 > Easily encrypt or decrypt your most important files.
 
-[![License](https://img.shields.io/github/license/balena-io/etcher.svg?style=flat-square)](https://github.com/tehtko/Emray/blob/master/LICENSE)
+[![License](style=flat-square)](https://github.com/tehtko/Emray/blob/master/LICENSE)
 
 Emray is a cross-platform file encrypter/decrypter built with .NET MAUI. 
 
