@@ -53,8 +53,18 @@
         row-gap: 30px;
     }
 
-    input[type="file"] {
-        display: none;
+    input[type="text"] {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 50px;
+        width: 250px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #2a2a2a;
+        font-size: 16px;
+        margin-top: -20px;
+        text-align: center;
     }
 
     #section-f, #section-o {
@@ -137,8 +147,8 @@
                 <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
             </svg>
             <label id="section-f">
-                <input @oninput="@(x => UpdatePath('F', "C:\\Users\\Admin\\Program Files(86x)\\File"))" type="file" />
-                @FileName
+                @FilePath
+                <input type="text" @bind="@FilePath" @oninput="@(x => { FilePath=(string)x.Value;})" placeholder="Paste file location here"/>
             </label>
         </div>
         <div id="box">
@@ -147,15 +157,15 @@
                 <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
             </svg>
             <label id="section-o">
-                <input @oninput="@(x => UpdatePath('O', "C:\\Users\\Admin\\Program Files(86x)\\Path"))" type="file" />
                 @OutputPath
+                <input type="text" @bind="@OutputPath" @oninput="@(x => { FilePath=(string)x.Value;})" placeholder="Paste output location here"/>
             </label>
         </div>
         <div id="box">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd" />
             </svg>
-            <button @onclick="Run" id="section-e">
+            <button type="submit" @onclick="Run" id="section-e">
                 @Method
             </button>
         </div>
@@ -183,10 +193,10 @@
         switch (Method)
         {
             case "Encrypt":
-                EncryptionService.Encrypt(FilePath, OutputPath);
+                EncryptionService.Encrypt(FilePath);
                 break;
             case "Decrypt":
-                EncryptionService.Decrypt(FilePath, OutputPath);
+                EncryptionService.Decrypt(FilePath);
                 break;
             default:
                 Error = $"Error running {Method}ion. Please restart the application";
@@ -200,13 +210,5 @@
             Method = "Decrypt";
         else
             Method = "Encrypt";
-    }
-
-    void UpdatePath(char args, string path)
-    {
-        if (args == 'F')
-            FileName = path;
-        else
-            OutputPath = path;
     }
 }
