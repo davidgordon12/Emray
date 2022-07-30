@@ -2,8 +2,8 @@
 {
     interface IEncryptionService
     {
-        void Encrypt(string FilePath, string OutputPath);
+        string Encrypt(string FilePath, string OutputPath);
 
-        void Decrypt(string FilePath, string OutputPath);
+        string Decrypt(string FilePath, string OutputPath);
     }
 }
