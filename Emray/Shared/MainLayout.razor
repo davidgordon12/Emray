@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@using Emray.Services
+@inject IEncryptionService EncryptionService
 
 <style>
     #main {
@@ -123,7 +125,7 @@
 
 <div id="main">
     <div id="header">
-        <h2>EMRAY.</h2>
+        <h2>@Error</h2>
             <svg id="gear" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
             </svg>
@@ -134,8 +136,8 @@
                 <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
             </svg>
             <label id="section-f">
-                <input @oninput="UpdateFPath" type="file" />
-                @File
+                <input @oninput="@(x => UpdatePath('F', "C:\\Users\\Admin\\Program Files(86x)\\File"))" type="file" />
+                @FileName
             </label>
         </div>
         <div id="box">
@@ -144,8 +146,8 @@
                 <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
             </svg>
             <label id="section-o">
-                <input @oninput="UpdateOPath" type="file" />
-                @Output
+                <input @oninput="@(x => UpdatePath('O', "C:\\Users\\Admin\\Program Files(86x)\\Path"))" type="file" />
+                @OutputPath
             </label>
         </div>
         <div id="box">
@@ -158,8 +160,8 @@
         </div>
     </div>
     <div id="selection">
-        <button @onclick="Encrypt" id="Encrypt" value="Encrypt">Encrypt</button>
-        <button @onclick="Decrypt" id="Decrypt" value="Decrypt">Decrypt</button>
+        <button @onclick="@(x => UpdateMethod('E'))" id="Encrypt" value="Encrypt">Encrypt</button>
+        <button @onclick="@(x => UpdateMethod('D'))" id="Decrypt" value="Decrypt">Decrypt</button>
     </div>
 </div>
 
@@ -168,17 +170,22 @@
 </div>
 
 @code {
-    string File { get; set; } = "Select File";
-    string Output { get; set; } = "Output Location";
+    string FileName { get; set; } = "Select File";
     string Method { get; set; } = "Encrypt";
-    string Error { get; set; }
+
+    string Error { get; set; } = "EMRAY.";
+    string OutputPath { get; set; } = "Output Location";
+    string FilePath { get; set; }
+
     void Run()
     {
         switch (Method)
         {
             case "Encrypt":
+                EncryptionService.Encrypt(FilePath, OutputPath);
                 break;
             case "Decrypt":
+                EncryptionService.Decrypt(FilePath, OutputPath);
                 break;
             default:
                 Error = $"Error running {Method}ion. Please restart the application";
@@ -186,23 +193,19 @@
         }
     }
 
-    void Encrypt()
+    void UpdateMethod(char args)
     {
-        Method = "Encrypt";
+        if (args == 'D')
+            Method = "Decrypt";
+        else
+            Method = "Encrypt";
     }
 
-    void Decrypt()
+    void UpdatePath(char args, string path)
     {
-        Method = "Decrypt";
-    }
-
-    void UpdateFPath()
-    {
-        File = "File Name";
-    }
-
-    void UpdateOPath()
-    {
-        Output = "Folder Name";
+        if (args == 'F')
+            FileName = path;
+        else
+            OutputPath = path;
     }
 }
