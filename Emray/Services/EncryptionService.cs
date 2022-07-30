@@ -104,7 +104,6 @@ namespace Emray.Services
                 inFs.Seek(8 + lenK, SeekOrigin.Begin);
                 inFs.Read(IV, 0, lenIV);
 
-                Directory.CreateDirectory(OutputPath);
                 byte[] KeyDecrypted = _rsa.Decrypt(KeyEncrypted, false);
 
                 ICryptoTransform transform = aes.CreateDecryptor(KeyDecrypted, IV);

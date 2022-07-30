@@ -147,7 +147,6 @@
                 <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
             </svg>
             <label id="section-f">
-                @FilePath
                 <input type="text" @bind="@FilePath" @oninput="@(x => { FilePath=(string)x.Value;})" placeholder="Paste file location here"/>
             </label>
         </div>
@@ -157,7 +156,6 @@
                 <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
             </svg>
             <label id="section-o">
-                @OutputPath
                 <input type="text" @bind="@OutputPath" @oninput="@(x => { FilePath=(string)x.Value;})" placeholder="Paste output location here"/>
             </label>
         </div>
@@ -185,7 +183,7 @@
     string Method { get; set; } = "Encrypt";
 
     string Error { get; set; } = "EMRAY.";
-    string OutputPath { get; set; } = "Output Location";
+    string OutputPath { get; set; }
     string FilePath { get; set; }
 
     void Run()
@@ -193,10 +191,10 @@
         switch (Method)
         {
             case "Encrypt":
-                EncryptionService.Encrypt(FilePath);
+                EncryptionService.Encrypt(FilePath, null);
                 break;
             case "Decrypt":
-                EncryptionService.Decrypt(FilePath);
+                EncryptionService.Decrypt(FilePath, null);
                 break;
             default:
                 Error = $"Error running {Method}ion. Please restart the application";
