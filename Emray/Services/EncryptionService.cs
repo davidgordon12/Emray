@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Emray.Services
+﻿namespace Emray.Services
 {
-    internal class EncryptionService
+    internal class EncryptionService : IEncryptionService
     {
+        public void Decrypt(string FilePath, string OutputPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Encrypt(string FilePath, string OutputPath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
