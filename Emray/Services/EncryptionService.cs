@@ -23,7 +23,7 @@ namespace Emray.Services
             if (_rsa == null)
                 return false;
 
-            string file = new FileInfo(FilePath).Name;
+            string file = FilePath;
 
             Aes aes = Aes.Create();
             ICryptoTransform transform = aes.CreateEncryptor();
