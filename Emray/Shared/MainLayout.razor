@@ -2,120 +2,140 @@
 
 <style>
     #main {
-    width: 100%;
-    height: 641px;
-    background-color: #2a2a2a;
-}
-
-h2 {
-    text-align: center;
-    margin: 0;
-    padding-top: 50px;
-    color: azure;
-    letter-spacing: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 45px;
-}
-
-#container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8%;
-}
-
-#box {
-    margin-top: 30px;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    row-gap: 30px;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-#section-f, #section-o {
-    color: #2a2a2a;
-    font-weight: bold;
-    background-color: azure;
-    border-radius: 25px;
-    border: 2px solid azure;
-    padding-top: 15px;
-    height: 30px;
-    width: 250px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#section-e {
-    color: #2a2a2a;
-    font-weight: bold;
-    font-size: 16px;
-    background-color: azure;
-    border-radius: 25px;
-    border: 2px solid azure;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    height: 50px;
-    width: 250px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-    #section-f:hover, #section-o:hover, #section-e:hover, #Encrypt:hover, #Decrypt:hover {
-        animation: pulse 2s infinite;
+        width: 100%;
+        height: 641px;
+        background-color: #2a2a2a;
     }
 
-svg {
-    height: 70px;
-    color: azure;
-}
-
-#selection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15%;
-    padding-top: 40px;
-}
-
-#Encrypt, #Decrypt {
-    color: #2a2a2a;
-    font-weight: bold;
-    background-color: azure;
-    border-radius: 25px;
-    border: 2px solid azure;
-    font-size: 14px;
-    height: 30px;
-    width: 150px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-    #Encrypt:active, #Decrypt:active {
-        width: 155px;
-        height: 34px;
-        font-size: 15px;
+    #header {
+        display: flex;
+        justify-content: center;
     }
+
+    h2 {
+        text-align: center;
+        margin: 0;
+        padding-top: 45px;
+        color: azure;
+        letter-spacing: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 45px;
+    }
+
+    #gear {
+        position: absolute;
+        padding-top: 10px;
+        right: 10px;
+        height: 40px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    #container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8%;
+    }
+
+    #box {
+        margin-top: 30px;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        row-gap: 30px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    #section-f, #section-o {
+        color: #2a2a2a;
+        font-weight: bold;
+        background-color: azure;
+        border-radius: 25px;
+        border: 2px solid azure;
+        padding-top: 15px;
+        height: 30px;
+        width: 250px;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #section-e {
+        color: #2a2a2a;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: azure;
+        border-radius: 25px;
+        border: 2px solid azure;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        height: 50px;
+        width: 250px;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+        #section-f:hover, #section-o:hover, #section-e:hover, #Encrypt:hover, #Decrypt:hover {
+            animation: pulse 2s infinite;
+        }
+
+    svg {
+        height: 70px;
+        color: azure;
+    }
+
+    #selection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15%;
+        padding-top: 40px;
+    }
+
+    #Encrypt, #Decrypt {
+        color: #2a2a2a;
+        font-weight: bold;
+        background-color: azure;
+        border-radius: 25px;
+        border: 2px solid azure;
+        font-size: 14px;
+        height: 30px;
+        width: 150px;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+        #Encrypt:active, #Decrypt:active {
+            width: 155px;
+            height: 34px;
+            font-size: 15px;
+        }
 
 </style>
 
 <div id="main">
-    <h2>EMRAY.</h2>
+    <div id="header">
+        <h2>EMRAY.</h2>
+            <svg id="gear" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+            </svg>
+    </div>
     <div id="container">
         <div id="box">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
             </svg>
             <label id="section-f">
-                <input type="file" />
-                Select File
+                <input @oninput="UpdateFPath" type="file" />
+                @File
             </label>
         </div>
         <div id="box">
@@ -124,8 +144,8 @@ svg {
                 <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
             </svg>
             <label id="section-o">
-                <input type="file" />
-                Output Location
+                <input @oninput="UpdateOPath" type="file" />
+                @Output
             </label>
         </div>
         <div id="box">
@@ -143,7 +163,13 @@ svg {
     </div>
 </div>
 
+<div id="settings_menu">
+
+</div>
+
 @code {
+    string File { get; set; } = "Select File";
+    string Output { get; set; } = "Output Location";
     string Method { get; set; } = "Encrypt";
     string Error { get; set; }
     void Run()
@@ -168,5 +194,15 @@ svg {
     void Decrypt()
     {
         Method = "Decrypt";
+    }
+
+    void UpdateFPath()
+    {
+        File = "File Name";
+    }
+
+    void UpdateOPath()
+    {
+        Output = "Folder Name";
     }
 }
