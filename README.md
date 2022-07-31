@@ -13,3 +13,8 @@ Emray is a cross-platform file encrypter/decrypter built with .NET MAUI.
 ## Upcoming Features
 - Custom output location
 - Private encryption / decryption key
+
+## How to Build
+> Requires Visual Studio 2022 Preview Edition
+- Download ZIP or git clone https://github.com/tehtko/Emray.git to any directory
+- Open Emray.sln with VS2022 Preview
